@@ -16,7 +16,6 @@ export default function Form({addItem}){
 
     function handleSubmit(event){
         event.preventDefault()
-        console.log(formData)
         addItem(formData.title)
         setFormData({title: ""})
     }
@@ -24,7 +23,8 @@ export default function Form({addItem}){
     return (
         <div>
            <form onSubmit={handleSubmit}>
-               <input 
+               <input
+                   required
                    type="text"
                    name="title"
                    placeholder="What Do You want to do?"
