@@ -9,6 +9,7 @@ import ReactConfetti from 'react-confetti';
 
 function App() {
   const [toDoList, setToDoList] = React.useState(() => JSON.parse(localStorage.getItem("list")) || [])
+  const [editItem, setEditItem] = React.useState({isCompleted: false, title: ""})
 
   React.useEffect(() => {
     localStorage.setItem("list",JSON.stringify(toDoList))
@@ -25,12 +26,17 @@ function App() {
   function addItem(item){
       setToDoList(prevItems => [item, ...prevItems])
   }
+
+  function handleEdit(itemObj){
+    setEditItem(toDoList.find(list => list.title === itemObj.title))
+  }
   
   return (
     <div className="App">
     {toDoList.length === 0 && <ReactConfetti />}
       <Form 
         addItem={addItem}
+        editItem={editItem}
       />
       {
         toDoList.length === 0 ?
@@ -42,6 +48,7 @@ function App() {
           toDoList={toDoList}
           deleteItem={deleteItem}
           setChecked={setChecked}
+          handleEdit={handleEdit}
         />
       }
     </div>

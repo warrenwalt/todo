@@ -1,5 +1,10 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
+
+
 
 
 export default function Form({addItem}){
@@ -32,8 +37,9 @@ export default function Form({addItem}){
                    value={formData.title}
                    onChange={handleChange}
                />
-
-               <button type="submit">+ Add</button>
+              <Fab size="small" color="primary" type="submit">
+                  <AddIcon />
+              </Fab>
            </form>
         </div>
     )
