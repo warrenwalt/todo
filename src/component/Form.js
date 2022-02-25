@@ -3,21 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Form({addItem}){
-    const [formData, setFormData] = React.useState({title: ""})
+    const [formData, setFormData] = React.useState({isCompleted:false, title:""})
 
     function handleChange(event){
         setFormData(prevData => (
             {
                 ...prevData,
-                title: event.target.value
+                title: event.target.value,
+                isCompleted: event.target.checked
             }
         ))
     }
 
     function handleSubmit(event){
         event.preventDefault()
-        addItem(formData.title)
-        setFormData({title: ""})
+        addItem(formData)
+        setFormData({title: "", isCompleted:false})
     }
 
     return (

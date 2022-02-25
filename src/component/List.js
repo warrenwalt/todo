@@ -2,30 +2,21 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-export default function List({list, deleteList}){
-    const [checked, setChecked] = React.useState(false)
-
-    function handleChange(e){
-        setChecked(e.target.checked)
-        console.log(e.target.checked)
-    }
-
-    const style = checked ? {textDecoration: "line-through"}: {textDecoration: "inherit"}
+export default function List({list, deleteList, setChecked}){
+    const style = {textDecoration:list.isCompleted ? "line-through": "inherit"}
 
     return (
         <div>
         <form onSubmit={e => e.preventDefault()}>
             <input 
-            style={{color: "red"}}
                 type="checkbox"
                 name='isComplete'
-                onChange={handleChange}
-                checked={checked}
-                id="isComplete"
+                onChange={e => setChecked(list.title)}
+                checked={list.isCompleted}
             />
-            <pre style={style}>{list}</pre>
+            <pre style={style}>{list.title}</pre>
             <button
-                onClick={() => deleteList(list)}
+                onClick={() => deleteList(list.title)}
             >
             Delete
             </button>

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,7 +15,11 @@ function App() {
   }, [toDoList])
   
   function deleteItem(item){
-      setToDoList(prevItems => prevItems.filter(list => list !== item))
+      setToDoList(prevItems => prevItems.filter(list => list.title !== item))
+  }
+
+  function setChecked(list){
+    setToDoList(prevItems => prevItems.map(item => item.title === list ? {...item, isCompleted: !item.isCompleted}: item))
   }
 
   function addItem(item){
@@ -38,6 +41,7 @@ function App() {
         <ToDoList 
           toDoList={toDoList}
           deleteItem={deleteItem}
+          setChecked={setChecked}
         />
       }
     </div>
