@@ -5,7 +5,7 @@ import List from "./List";
 import { nanoid } from "nanoid";
 // import Confetti from "react-confetti/dist/types/Confetti";
 
-export default function ToDoList({toDoList, deleteItem, setChecked}){
+export default function ToDoList({toDoList, deleteItem, setChecked, handleEdit}){
 
     const allList = toDoList.map(list => (
         <List 
@@ -13,6 +13,7 @@ export default function ToDoList({toDoList, deleteItem, setChecked}){
             list={list}
             deleteList={deleteItem}
             setChecked={setChecked}
+            handleEdit={handleEdit}
         />
     ))
 
