@@ -2,6 +2,9 @@ import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { AppBar, Button, IconButton, MenuItem, Toolbar, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 import Form from './component/Form';
 import ToDoList from './component/ToDoList';
@@ -33,6 +36,35 @@ function App() {
   
   return (
     <div className="App">
+    <AppBar
+      color="secondary"
+      enableColorOnDark
+      position="fixed"
+    >
+      <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          sx={{mr:2}}
+        >
+          <MenuIcon/>
+        </IconButton>
+        <Typography
+          variant="h4"
+          component="div"
+          sx={{flexGrow: 0.8}}
+        >
+          ToDo
+        </Typography>
+        <Button
+          color="success"
+          variant="contained"
+        >
+          Act
+        </Button>
+      </Toolbar>
+    </AppBar>
     {toDoList.length === 0 && <ReactConfetti />}
       <Form 
         addItem={addItem}

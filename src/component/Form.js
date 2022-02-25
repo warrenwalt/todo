@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
+import Grid from '@mui/material/Grid';
+
 
 
 
@@ -29,17 +31,28 @@ export default function Form({addItem}){
     return (
         <div>
            <form onSubmit={handleSubmit}>
-               <input
-                   required
-                   type="text"
-                   name="title"
-                   placeholder="What Do You want to do?"
-                   value={formData.title}
-                   onChange={handleChange}
-               />
-              <Fab size="small" color="primary" type="submit">
-                  <AddIcon />
-              </Fab>
+           <Grid
+            container
+            spacing={3}
+            justifyContent="center"
+            style={{marginTop: "50px"}}
+           >
+                <Grid item xs="auto">
+                    <input
+                        required
+                        type="text"
+                        name="title"
+                        placeholder="What Do You want to do?"
+                        value={formData.title}
+                        onChange={handleChange}
+                    />
+                </Grid>
+                <Grid item xs="auto">
+                    <Fab size="small" color="primary" type="submit">
+                        <AddIcon />
+                    </Fab>
+                </Grid>
+            </Grid>
            </form>
         </div>
     )

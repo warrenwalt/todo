@@ -18,7 +18,7 @@ export default function List({list, deleteList, setChecked, handleEdit}){
             <form onSubmit={e => e.preventDefault()}>
                 <Grid
                 direction="row"
-                justifyContent="flex-start"
+                justifyContent="center"
                 alignItems="center"
                 container
                 spacing={2}
